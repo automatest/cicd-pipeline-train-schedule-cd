@@ -8,7 +8,7 @@ pipeline {
                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
             }
         }
-        stage('DeployingToStaging') {
+        stage('DeployToStaging') {
             when {
                 branch 'master'
             }
@@ -22,8 +22,8 @@ pipeline {
                                 configName: 'staging',
                                 sshCredentials: [
                                     username: "$USERNAME",
-                                    encryptedPassphase: "$USERPASS"
-                                ],
+                                    encryptedPassphrase: "$USERPASS"
+                                ], 
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: 'dist/trainSchedule.zip',
